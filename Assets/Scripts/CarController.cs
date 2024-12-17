@@ -32,7 +32,7 @@ public class CarController : MonoBehaviour
   [SerializeField] public Material blinkerOn;
   [SerializeField] public GameObject LeftBlinker;
   [SerializeField] public GameObject RightBlinker;
-  
+
   [SerializeField] public GameObject BrakeLight;
 
   [Header("Wheels")]
@@ -140,7 +140,8 @@ public class CarController : MonoBehaviour
     if (Input.GetKey(KeyCode.D)) TurnRight();
 
     //Right Blinker
-    if (Input.GetKeyUp(KeyCode.E)) {
+    if (Input.GetKeyUp(KeyCode.E))
+    {
       rightBlinkerOn = !rightBlinkerOn;
       leftBlinkerOn = false;
     }
@@ -198,6 +199,7 @@ public class CarController : MonoBehaviour
   public void TurnLeft()
   {
     steeringAxis = steeringAxis - (Time.deltaTime * 10f * steeringSpeed);
+    if (steeringAxis > .95f) rightBlinkerOn = false;
     if (steeringAxis < -1f) steeringAxis = -1f;
     var steeringAngle = steeringAxis * maxSteeringAngle;
     frontLeftCollider.steerAngle = Mathf.Lerp(frontLeftCollider.steerAngle, steeringAngle, steeringSpeed);
@@ -208,6 +210,7 @@ public class CarController : MonoBehaviour
   {
     steeringAxis = steeringAxis + (Time.deltaTime * 10f * steeringSpeed);
     if (steeringAxis > 1f) steeringAxis = 1f;
+    if (steeringAxis < -.95f) leftBlinkerOn = false;
     var steeringAngle = steeringAxis * maxSteeringAngle;
     frontLeftCollider.steerAngle = Mathf.Lerp(frontLeftCollider.steerAngle, steeringAngle, steeringSpeed);
     frontRightCollider.steerAngle = Mathf.Lerp(frontRightCollider.steerAngle, steeringAngle, steeringSpeed);
@@ -215,6 +218,13 @@ public class CarController : MonoBehaviour
 
   public void ResetSteeringAngle()
   {
+    // If reseting form a near max angle turn off blinkers
+    if (Math.Abs(steeringAxis) > .95f)
+    {
+      leftBlinkerOn = false;
+      rightBlinkerOn = false;
+    }
+
     if (steeringAxis < 0f)
     {
       steeringAxis = steeringAxis + (Time.deltaTime * 10f * steeringSpeed);
