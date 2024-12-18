@@ -1,6 +1,6 @@
 using System;
 using System.Collections;
-using Unity.VisualScripting;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class CarController : MonoBehaviour
@@ -25,6 +25,9 @@ public class CarController : MonoBehaviour
   public int handbrakeDriftMultiplier = 5;
   [SerializeField] public bool leftBlinkerOn;
   [SerializeField] public bool rightBlinkerOn;
+  [SerializeField] public bool offRoad;
+
+  [SerializeField] public List<string> wheelsOffRoad = new List<string>();
 
   [Header("References")]
   [SerializeField] public Vector3 bodyMassCenter;
@@ -32,7 +35,6 @@ public class CarController : MonoBehaviour
   [SerializeField] public Material blinkerOn;
   [SerializeField] public GameObject LeftBlinker;
   [SerializeField] public GameObject RightBlinker;
-
   [SerializeField] public GameObject BrakeLight;
 
   [Header("Wheels")]
@@ -174,7 +176,7 @@ public class CarController : MonoBehaviour
     if (rightBlinkerOn && !rightBlinkerCoroutine) StartCoroutine(RightBlinkerFlash());
   }
 
-  private IEnumerator LeftBlinkerFlash()
+    private IEnumerator LeftBlinkerFlash()
   {
     leftBlinkerCoroutine = true;
     MeshRenderer blinker = LeftBlinker.GetComponent<MeshRenderer>();
@@ -225,8 +227,7 @@ public class CarController : MonoBehaviour
       rightBlinkerOn = false;
     }
 
-    if (steeringAxis < 0f)
-    {
+    if (steeringAxis < 0f)    {
       steeringAxis = steeringAxis + (Time.deltaTime * 10f * steeringSpeed);
     }
     else if (steeringAxis > 0f)
@@ -499,4 +500,5 @@ public class CarController : MonoBehaviour
       driftingAxis = 0f;
     }
   }
+
 }
