@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class TireCheckOffroad : MonoBehaviour
 {
-
     private CarController player;
 
     void Awake()

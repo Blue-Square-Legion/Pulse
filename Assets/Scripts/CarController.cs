@@ -25,7 +25,7 @@ public class CarController : MonoBehaviour
   public int handbrakeDriftMultiplier = 5;
   [SerializeField] public bool leftBlinkerOn;
   [SerializeField] public bool rightBlinkerOn;
-  [SerializeField] public bool offRoad;
+  [SerializeField] public static bool offRoad;
 
   [SerializeField] public List<string> wheelsOffRoad = new List<string>();
 

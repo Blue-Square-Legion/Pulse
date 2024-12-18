@@ -44,9 +44,9 @@ public class LevelManager : MonoBehaviour
     void Update()
     {
         // Speed Check
-        if (player.speed > currentZoneSpeedLimit && !speedLimitViolationCoroutine) StartCoroutine(SpeedLimitViolation());
+        if (CarController.speed > currentZoneSpeedLimit && !speedLimitViolationCoroutine) StartCoroutine(SpeedLimitViolation());
 
-        if (player.offRoad && !offRoadViolationCoroutine) StartCoroutine(OffRoadViolation());
+        if (CarController.offRoad && !offRoadViolationCoroutine) StartCoroutine(OffRoadViolation());
     }
 
     private IEnumerator OffRoadViolation()
@@ -54,7 +54,7 @@ public class LevelManager : MonoBehaviour
         offRoadViolationCoroutine = true;
         // TODO Display Warning on UI
         yield return new WaitForSeconds(5f);
-        if (player.offRoad)
+        if (CarController.offRoad)
         {
             points -= speedLimitDeduction;
             // TODO display visual and update HUD elements
@@ -67,7 +67,7 @@ public class LevelManager : MonoBehaviour
         speedLimitViolationCoroutine = true;
         // TODO Display Warning on UI
         yield return new WaitForSeconds(5f);
-        if (player.speed > currentZoneSpeedLimit)
+        if (CarController.speed > currentZoneSpeedLimit)
         {
             points -= speedLimitDeduction;
             // TODO display visual and update HUD elements
