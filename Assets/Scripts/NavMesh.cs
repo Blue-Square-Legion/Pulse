@@ -33,7 +33,7 @@ public void GoToNextPoint()
     public void Update()
     {
         if (_continue) 
-        agent.destination=(player.position);
+        agent.SetDestination(player.position);
       
     }
 }
