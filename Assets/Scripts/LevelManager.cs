@@ -25,12 +25,14 @@ public class LevelManager : MonoBehaviour
     private static int roundAboutDection = 5;
     private static int timeDeduction = 10;
     private static int offRoadDeduction = 5;
+    private static int stopZoneDeduction = 10;
     private static int collisionDeduction = 10;
 
 
     // Private Vars
     private bool speedLimitViolationCoroutine = false;
     private bool offRoadViolationCoroutine = false;
+    private bool oneWayViolationCoroutine = false;
 
 
     private void Awake()
@@ -53,6 +55,21 @@ public class LevelManager : MonoBehaviour
         // Speed Check
         if (CarController.speed > currentZoneSpeedLimit && !speedLimitViolationCoroutine) StartCoroutine(SpeedLimitViolation());
         if (player.offRoad && !offRoadViolationCoroutine) StartCoroutine(OffRoadViolation());
+        if (player.wrongWay && !oneWayViolationCoroutine) StartCoroutine(OneWayViolation());
+    }
+
+    private IEnumerator OneWayViolation()
+    {
+        oneWayViolationCoroutine = true;
+        // TODO Display Warning on UI
+        yield return new WaitForSeconds(5f);
+        if (player.wrongWay)
+        {
+            points -= oneWayDeduction;
+            violations++;
+            // TODO display visual and update HUD elements
+        }
+        oneWayViolationCoroutine = false;
     }
 
     private IEnumerator OffRoadViolation()
@@ -83,9 +100,15 @@ public class LevelManager : MonoBehaviour
         speedLimitViolationCoroutine = false;
     }
 
+    public void StopZoneViolation()
+    {
+        points -= stopZoneDeduction;
+        violations++;
+    }
+
     public void CollisionViolation()
     {
         points -= collisionDeduction;
         violations++;
     }
-}
+}   
