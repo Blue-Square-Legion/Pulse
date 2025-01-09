@@ -1,58 +1,61 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Search;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class NavMesh : MonoBehaviour
 {
-    public Transform player;
+    public List<GameObject> productionQueue = new List<GameObject>();
+   // public Transform target;
+    
     private NavMeshAgent agent;
    // [SerializeField] Transform[] waypoints;
   //  [SerializeField] private int destinationPoint;
   //  public GameObject stop1;
   // public GameObject stop2;
     bool _continue=true;
+    int i =0;
+    public GameObject Leadcar;
     private float timer = 12f;
+    
+    bool _proceed=false;
+   public float distance;
     public void Start()
     {
+         i=0;
+      //  wayPt[0].SetActive(true);
+     //   wayPt[1].SetActive(false);
+      //  wayPt[2].SetActive(false);
+     //   wayPt[3].SetActive(false);
         // stop1.SetActive(true);
         // stop2.SetActive(false);
         agent = GetComponent<NavMeshAgent>();
-        GetComponent<NavMeshAgent>().speed = 15f;
+        agent.GetComponent<NavMeshAgent>().speed = 35f;
     }
-/*(    }
-public void GoToNextPoint()
-    {
-        if (waypoints.Length == 0)
-            return;
+    
+public void GoToNext()
+{
+foreach (GameObject wpt in productionQueue)
+{
+distance = Vector3.Distance(wpt.transform.position,Leadcar.transform.position);               
+if(distance <= 50)
+{  
+     Destroy(wpt);
 
-        var NextPoint = Random.Range(0, waypoints.Length);
-        destinationPoint = (destinationPoint + NextPoint) % waypoints.Length;
-    }
-*/
- /*  public void OnTriggerEnter(Collider other)
-    {
-        stop2.SetActive(true);
-       // if (other.gameObject.CompareTag("Player")) {
-           _continue = false;
-         
-       //   agent.transform.position = agent.transform.position;
-       // }
-    }
- */
+}
+
+ wpt.SetActive(true);
+agent.SetDestination(wpt.transform.position);
+}       
+}
+
+ 
     public void Update()
     {
-        if (_continue)
-        {
-            agent.SetDestination(player.position);
-           // stop1.SetActive(false);
-        }
-        timer -= Time.deltaTime;
-        if (timer <=0 && !_continue)
-        {
-           // stop2.SetActive(false);
-            agent.SetDestination(player.position);
-        }
+     
+          GoToNext();
       
     }
 }
