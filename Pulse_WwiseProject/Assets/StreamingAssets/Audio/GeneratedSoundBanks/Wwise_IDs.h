@@ -15,6 +15,10 @@ namespace AK
     {
         static const AkUniqueID CARENGINESTART = 2231332761U;
         static const AkUniqueID LEVELSTART = 3372421815U;
+        static const AkUniqueID MENUCLICK = 3711598968U;
+        static const AkUniqueID RADIOSTART = 622084806U;
+        static const AkUniqueID RADIOSTOP = 1232312710U;
+        static const AkUniqueID TRIGGERALERT = 293751399U;
         static const AkUniqueID TURNSIGNAL = 3858101368U;
     } // namespace EVENTS
 

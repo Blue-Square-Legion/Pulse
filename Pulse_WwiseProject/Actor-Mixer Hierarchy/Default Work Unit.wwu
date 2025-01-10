@@ -76,6 +76,7 @@
 					<PropertyList>
 						<Property Name="3DSpatialization" Type="int16" Value="1"/>
 						<Property Name="BlendBehavior" Type="int16" Value="1"/>
+						<Property Name="EnableLoudnessNormalization" Type="bool" Value="True"/>
 						<Property Name="Volume" Type="Real64">
 							<ValueList>
 								<Value>-10</Value>
@@ -518,6 +519,9 @@
 				<Folder Name="TurnSignal" ID="{3B5BAD1C-24DD-4EAD-8492-3F088C21A7C6}" ShortID="893960170">
 					<ChildrenList>
 						<Sound Name="TurnSignalOn" ID="{3905921C-BB07-4201-907E-E64BB7A675DE}" ShortID="775539824">
+							<PropertyList>
+								<Property Name="EnableLoudnessNormalization" Type="bool" Value="True"/>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{36DE3217-4056-41BB-9996-426F972FF4EE}"/>
@@ -544,6 +548,9 @@
 							</ActiveSourceList>
 						</Sound>
 						<Sound Name="TurnSignalOff" ID="{8B28436D-5A6C-4C1C-91EF-2E1FA00F07CA}" ShortID="392640487">
+							<PropertyList>
+								<Property Name="EnableLoudnessNormalization" Type="bool" Value="True"/>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{36DE3217-4056-41BB-9996-426F972FF4EE}"/>
@@ -708,6 +715,9 @@
 				<Folder Name="RadioButton" ID="{A19BCF97-96AA-455F-8B7E-260269785D73}" ShortID="1068637340">
 					<ChildrenList>
 						<Sound Name="radio-button" ID="{631F175C-D5E5-4681-B766-41583626D73E}" ShortID="768196332">
+							<PropertyList>
+								<Property Name="EnableLoudnessNormalization" Type="bool" Value="True"/>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{36DE3217-4056-41BB-9996-426F972FF4EE}"/>
