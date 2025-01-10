@@ -7,48 +7,57 @@ using UnityEngine.SocialPlatforms.Impl;
 
 public class NavMesh : MonoBehaviour
 {
-    public List<GameObject> productionQueue = new List<GameObject>();
+ //   public List<GameObject> productionQueue = new List<GameObject>();
    // public Transform target;
-    
+    public GameObject [] wpt;
     private NavMeshAgent agent;
-   // [SerializeField] Transform[] waypoints;
-  //  [SerializeField] private int destinationPoint;
-  //  public GameObject stop1;
-  // public GameObject stop2;
-    bool _continue=true;
+  
+    bool _continue=false;
     int i =0;
     public GameObject Leadcar;
     private float timer = 12f;
     
-    bool _proceed=false;
+  
    public float distance;
     public void Start()
     {
          i=0;
-      //  wayPt[0].SetActive(true);
-     //   wayPt[1].SetActive(false);
-      //  wayPt[2].SetActive(false);
-     //   wayPt[3].SetActive(false);
-        // stop1.SetActive(true);
-        // stop2.SetActive(false);
+   //  foreach (GameObject wpt in productionQueue)
+   wpt[1].SetActive(false);
+   wpt[2].SetActive(false);
+   wpt[3].SetActive(false);
+    wpt[4].SetActive(false);
         agent = GetComponent<NavMeshAgent>();
         agent.GetComponent<NavMeshAgent>().speed = 35f;
     }
     
 public void GoToNext()
 {
-foreach (GameObject wpt in productionQueue)
-{
-distance = Vector3.Distance(wpt.transform.position,Leadcar.transform.position);               
-if(distance <= 50)
-{  
-     Destroy(wpt);
+//foreach (GameObject wpt in productionQueue)
+//{
+distance = Vector3.Distance(wpt[i].transform.position,Leadcar.transform.position);               
+if(distance <= 180 ){
+ wpt[i].gameObject.SetActive(false);
 
-}
+ i++;
+Debug.Log(wpt[i]);
+   }
 
- wpt.SetActive(true);
-agent.SetDestination(wpt.transform.position);
-}       
+
+   
+if(i==wpt.Length-1)
+i=0;
+//wpt[i].SetActive(true);
+agent.SetDestination(wpt[i].transform.position);
+/*if(i==4&&distance <= 250)
+  { 
+    wpt[1].SetActive(true);
+   wpt[2].SetActive(false);
+   wpt[3].SetActive(false);
+    wpt[4].SetActive(false);
+     _continue=false;
+  }
+  */
 }
 
  
