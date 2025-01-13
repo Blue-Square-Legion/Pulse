@@ -763,9 +763,10 @@
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Vorbis Quality High" ID="{53A9DE0F-3F4F-4B59-8614-3F9E3C7358FC}" WorkUnitID="{F6B2880C-85E5-47FA-A126-645B5DFD9ACC}"/>
+
 								</Reference>
 								<Reference Name="OutputBus">
-									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{852B9B6F-2D70-4700-88C4-AD260B64C804}"/>
+									<ObjectRef Name="GUI" ID="{7325A0F9-3D81-41DC-AD67-C1953B1F2055}" WorkUnitID="{852B9B6F-2D70-4700-88C4-AD260B64C804}"/>
 								</Reference>
 							</ReferenceList>
 							<ChildrenList>
