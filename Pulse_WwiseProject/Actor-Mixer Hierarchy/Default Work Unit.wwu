@@ -625,6 +625,13 @@
 							</ReferenceList>
 							<ChildrenList>
 								<AudioFileSource Name="radio-button" ID="{6C3FF1A4-EB07-43D5-8F4A-C031FA5DF536}">
+									<PropertyList>
+										<Property Name="VolumeOffset" Type="Real64">
+											<ValueList>
+												<Value>-5</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
 									<Language>SFX</Language>
 									<AudioFile>radio-button.wav</AudioFile>
 									<MediaIDList>
@@ -683,6 +690,13 @@
 							</ReferenceList>
 							<ChildrenList>
 								<AudioFileSource Name="text-ui" ID="{9A2AE599-ADC9-44E5-8D5A-11E5CD4023C1}">
+									<PropertyList>
+										<Property Name="VolumeOffset" Type="Real64">
+											<ValueList>
+												<Value>-5</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
 									<Language>SFX</Language>
 									<AudioFile>text-ui.wav</AudioFile>
 									<MediaIDList>
