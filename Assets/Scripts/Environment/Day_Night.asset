@@ -1,0 +1,104 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86d59fb21746e1c4d916bb148d38714c, type: 3}
+  m_Name: Day_Night
+  m_EditorClassIdentifier: 
+  ambiantColor:
+    serializedVersion: 2
+    key0: {r: 0.103773594, g: 0.103773594, b: 0.103773594, a: 1}
+    key1: {r: 0.28368637, g: 0.47767788, b: 0.7075472, a: 1}
+    key2: {r: 1, g: 0.8285769, b: 0.5235849, a: 0}
+    key3: {r: 1, g: 1, b: 1, a: 0}
+    key4: {r: 0.9716981, g: 0.7510531, b: 0.49043253, a: 0}
+    key5: {r: 0.48584908, g: 0.68710744, b: 1, a: 0}
+    key6: {r: 0.066037714, g: 0.066037714, b: 0.066037714, a: 0}
+    key7: {r: 0, g: 0, b: 0, a: 0}
+    ctime0: 0
+    ctime1: 16384
+    ctime2: 23323
+    ctime3: 32768
+    ctime4: 43176
+    ctime5: 49151
+    ctime6: 65535
+    ctime7: 0
+    atime0: 0
+    atime1: 65535
+    atime2: 0
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 0
+    m_ColorSpace: -1
+    m_NumColorKeys: 7
+    m_NumAlphaKeys: 2
+  directionColor:
+    serializedVersion: 2
+    key0: {r: 0, g: 0, b: 0, a: 1}
+    key1: {r: 0.26415092, g: 0.26415092, b: 0.26415092, a: 1}
+    key2: {r: 1, g: 1, b: 1, a: 0}
+    key3: {r: 0.2735849, g: 0.2735849, b: 0.2735849, a: 0}
+    key4: {r: 0, g: 0, b: 0, a: 0}
+    key5: {r: 0, g: 0, b: 0, a: 0}
+    key6: {r: 0, g: 0, b: 0, a: 0}
+    key7: {r: 0, g: 0, b: 0, a: 0}
+    ctime0: 0
+    ctime1: 18890
+    ctime2: 32575
+    ctime3: 46453
+    ctime4: 65535
+    ctime5: 0
+    ctime6: 0
+    ctime7: 0
+    atime0: 0
+    atime1: 65535
+    atime2: 0
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 0
+    m_ColorSpace: -1
+    m_NumColorKeys: 5
+    m_NumAlphaKeys: 2
+  fogColor:
+    serializedVersion: 2
+    key0: {r: 0.2971698, g: 0.5088352, b: 1, a: 1}
+    key1: {r: 0.45817015, g: 0.61826056, b: 0.9811321, a: 1}
+    key2: {r: 0.66033286, g: 0.6631524, b: 0.6698113, a: 0}
+    key3: {r: 1, g: 1, b: 1, a: 0}
+    key4: {r: 0.8113208, g: 0.8113208, b: 0.8113208, a: 0}
+    key5: {r: 0.2082592, g: 0.4185247, b: 0.9811321, a: 0}
+    key6: {r: 0, g: 0, b: 0, a: 0}
+    key7: {r: 0, g: 0, b: 0, a: 0}
+    ctime0: 0
+    ctime1: 15227
+    ctime2: 19275
+    ctime3: 32189
+    ctime4: 45296
+    ctime5: 62837
+    ctime6: 0
+    ctime7: 0
+    atime0: 0
+    atime1: 65535
+    atime2: 0
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 0
+    m_ColorSpace: -1
+    m_NumColorKeys: 6
+    m_NumAlphaKeys: 2
