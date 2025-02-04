@@ -75,6 +75,7 @@ public class CarController : MonoBehaviour
   private bool leftBlinkerCoroutine = false;
   private bool rightBlinkerCoroutine = false;
   private bool radioOn = true;
+  public Gear currentGear = Gear.Neutral;
 
   WheelFrictionCurve FLwheelFriction;
   float FLWextremumSlip;
@@ -84,6 +85,14 @@ public class CarController : MonoBehaviour
   float RLWextremumSlip;
   WheelFrictionCurve RRwheelFriction;
   float RRWextremumSlip;
+
+   // Enum to represent the car's current gear
+  public enum Gear
+  {
+      Neutral,
+      Forward,
+      Reverse
+  }
 
   void Awake()
   {
@@ -126,21 +135,70 @@ public class CarController : MonoBehaviour
       offRoad = false;
     }
 
-    // Accelerate
-    if (controls.ThrottleInput && (!controls.HandbrakeInput || !controls.ReverseInput))
+        if (Input.GetKeyDown(KeyCode.Equals) && currentGear == Gear.Neutral) // + key (Equals)
+        {
+            // Move to the next gear in the sequence: Neutral -> Forward
+            currentGear = Gear.Forward;
+            Debug.Log("Gear shifted to: Forward");
+        }
+        else if (Input.GetKeyDown(KeyCode.Minus) && currentGear == Gear.Neutral) // - key (Minus)
+        {
+            // Move to the previous gear in the sequence: Neutral -> Reverse
+            currentGear = Gear.Reverse;
+            Debug.Log("Gear shifted to: Reverse");
+        }
+        else if (Input.GetKeyDown(KeyCode.Equals) && currentGear == Gear.Reverse)
+        {
+            currentGear = Gear.Neutral; // Shift to Neutral (Stop)
+            Debug.Log("Gear shifted to: Neutral (Stop)");
+        }
+        else if (Input.GetKeyDown(KeyCode.Minus) && currentGear == Gear.Forward)
+        {
+            currentGear = Gear.Neutral; // Shift to Neutral (Stop)
+            Debug.Log("Gear shifted to: Neutral (Stop)");
+        }
+
+
+    switch (currentGear)
     {
-      CancelInvoke("DecelerateCar");
-      deceleratingCar = false;
-      GoForward();
+       case Gear.Forward:
+           // Accelerate
+           if (controls.ThrottleInput && (!controls.HandbrakeInput || !controls.ReverseInput))
+           {
+               CancelInvoke("DecelerateCar");
+               deceleratingCar = false;
+               GoForward();
+           }
+           break;
+       case Gear.Neutral:
+           rb.velocity = Vector3.zero; // Stop the car
+           break;
+       case Gear.Reverse:
+                // Reverse/Brake
+           if (controls.ReverseInput)
+           {
+               CancelInvoke("DecelerateCar");
+               deceleratingCar = false;
+               GoReverse();
+           }
+           break;
     }
 
-    // Reverse/Brake
-    if (controls.ReverseInput)
-    {
-      CancelInvoke("DecelerateCar");
-      deceleratingCar = false;
-      GoReverse();
-    }
+    //// Accelerate
+    //if (controls.ThrottleInput && (!controls.HandbrakeInput || !controls.ReverseInput))
+    //{
+    //  CancelInvoke("DecelerateCar");
+    //  deceleratingCar = false;
+    //  GoForward();
+    //}
+
+    //// Reverse/Brake
+    //if (controls.ReverseInput)
+    //{
+    //  CancelInvoke("DecelerateCar");
+    //  deceleratingCar = false;
+    //  GoReverse();
+    //}
 
     if (controls.TurnLeftInput) TurnLeft();
     if (controls.TurnRightInput) TurnRight();
