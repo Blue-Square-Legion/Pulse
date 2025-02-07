@@ -174,7 +174,7 @@ public class CarController : MonoBehaviour
            rb.velocity = Vector3.zero; // Stop the car
            break;
        case Gear.Reverse:
-                // Reverse/Brake
+           // Reverse Brake
            if (controls.ReverseInput)
            {
                CancelInvoke("DecelerateCar");
@@ -183,22 +183,6 @@ public class CarController : MonoBehaviour
            }
            break;
     }
-
-    //// Accelerate
-    //if (controls.ThrottleInput && (!controls.HandbrakeInput || !controls.ReverseInput))
-    //{
-    //  CancelInvoke("DecelerateCar");
-    //  deceleratingCar = false;
-    //  GoForward();
-    //}
-
-    //// Reverse/Brake
-    //if (controls.ReverseInput)
-    //{
-    //  CancelInvoke("DecelerateCar");
-    //  deceleratingCar = false;
-    //  GoReverse();
-    //}
 
     if (controls.TurnLeftInput) TurnLeft();
     if (controls.TurnRightInput) TurnRight();
