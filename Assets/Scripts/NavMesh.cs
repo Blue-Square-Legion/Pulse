@@ -23,6 +23,8 @@ public class NavMesh : MonoBehaviour
     // Car behaviour
     [SerializeField] public CarState currentState;
     [SerializeField] public TrafficSignal currentTrafficSignal;
+
+    [SerializeField] StopZone[] stopZoneScripts;
     public enum TrafficSignal
     {
         None,
@@ -109,14 +111,15 @@ public class NavMesh : MonoBehaviour
     public void StopAtStopSign()
     {
         currentState = CarState.Stopped;
+        Debug.Log("ENTER STOP ZONE");
         CarMovement();
     }
 
     void OnTriggerEnter(Collider collider)
     {
-        if (collider.gameObject.tag == "Road")
+        if (collider.CompareTag("Road"))
         {
-            PerformBehavior(TrafficSignal.StopSign);
+            StopAtStopSign();
         }
     }
 }
